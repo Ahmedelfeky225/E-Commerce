@@ -1,19 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchProductById, clearSelectedProduct } from "../app/features/product/productSlice";
 import { calculateDiscountPrice } from "../utils/functions";
-import { ChevronLeft } from "lucide-react";
-
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import { ChevronLeft, Maximize2, X } from "lucide-react";
 import InnerImageZoom from "react-inner-image-zoom";
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { selectedProduct: product, loading, error } = useSelector((state) => state.products);
+
+  // حالة للتحكم في وضع ملء الشاشة
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductById(id));
@@ -22,6 +23,14 @@ const ProductDetails = () => {
       dispatch(clearSelectedProduct());
     };
   }, [dispatch, id]);
+
+  const openFullscreen = () => {
+    setIsFullscreen(true);
+  };
+
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+  };
 
   if (loading) {
     return <p className="text-center text-lg">Loading...</p>;
@@ -35,21 +44,44 @@ const ProductDetails = () => {
     return <p className="text-center text-lg">Product not found</p>;
   }
 
+  const imageSrc = product.images && product.images.length > 0 ? product.images[0] : product.thumbnail;
+
   return (
     <div className="pt-[5.5rem] px-4 pb-5 container mx-auto max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl flex flex-col">
-      <button onClick={() => navigate(-1)} className="w-fit mb-4 mt-4 bg-[#eee] hover:bg-[#ddd] text-gray-900 rounded-full pl-2 pr-4 py-1 flex justify-center item-center">
+      <button
+        onClick={() => navigate(-1)}
+        className="w-fit mb-4 mt-4 bg-[#eee] hover:bg-[#ddd] text-gray-900 rounded-full pl-2 pr-4 py-1 flex justify-center item-center"
+      >
         <ChevronLeft />
         Back
       </button>
       <div className="flex flex-col lg:flex-row gap-6">
         {/* left Section */}
-        <div className="lg:w-[60%] lg:h-[600px] bg-white shadow-md flex flex-col justify-center items-center relative cursor-zoom-in overflow-hidden">
-        <InnerImageZoom
-                  className="w-full h-auto object-contain"
-                        src={product.thumbnail}
-                        zoomScale={1.3}
-                        hideCloseButton={true}
-        />
+        <div className="lg:w-[60%] lg:h-[600px] bg-white shadow-md relative cursor-zoom-in flex justify-center items-center">
+          <div className="relative w-full h-full flex justify-center items-center">
+          <div className="w-[80%]">
+              <InnerImageZoom
+              className="w-full h-full"
+              src={imageSrc}
+              zoomSrc={imageSrc}
+              zoomScale={1.3}
+              hideCloseButton={true}
+              imgAttributes={{
+                className: "object-cover w-full h-full object-center",
+              }}
+              width={600}
+              height={600}
+              hasSpacer={true}
+              zoomPreload={true}
+            />
+          </div>
+            <button
+              onClick={openFullscreen}
+              className="absolute top-2 right-2 bg-gray-800 text-white p-2 rounded-md hover:bg-gray-700 focus:outline-none"
+            >
+              <Maximize2 size={20} />
+            </button>
+          </div>
         </div>
         {/* left Section */}
 
@@ -68,11 +100,11 @@ const ProductDetails = () => {
                 {product.price} KWD
               </span>
             ) : (
-              <span className="text-gray-900 text-[15px]">{product.price} KWD</span>
+              <span className="text-gray-900 text-[24px]">{product.price} KWD</span>
             )}
 
-            {product.discountPercentage > 0 && (
-              <span className="text-red-500 text-sm bg-[#f94c4340] inline-block py-1 px-3 rounded-md">{Math.round(product.discountPercentage)}% OFF</span>
+            {Math.round(product.discountPercentage) > 0 && (
+              <span className="text-red-500 text-sm bg-[#f94c4340] inline-block py-1 px-3 rounded-md">{Math.round(product.discountPercentage)} % -</span>
             )}
           </div>
           <div>
@@ -82,6 +114,23 @@ const ProductDetails = () => {
         </div>
         {/* Right Section */}
       </div>
+
+      {isFullscreen && (
+        <div className="fixed inset-0 bg-[#ffffffe6] bg-opacity-90 flex justify-center items-center z-50">
+          <img
+            src={imageSrc}
+            alt="Fullscreen view"
+            className="max-w-[90%] max-h-[90%] object-contain"
+          />
+          <button
+            onClick={closeFullscreen}
+            className="absolute bottom-[10%] left-[50%] translate-x-[-50%] flex justify-center items-center scale-125 text-[#fff] w-[48px] h-[48px] p-2 rounded-full bg-[#230b45] hover:bg-[#230b45c4] focus:outline-none"
+          >
+            <X size={22} />
+          </button>
+        </div>
+      )}
+   
     </div>
   );
 };

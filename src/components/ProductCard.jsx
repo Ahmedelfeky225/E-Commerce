@@ -1,5 +1,5 @@
 import {Share2 } from "lucide-react";
-import { calculateDiscountPrice } from "../utils/functions";
+import { calculateDiscountPrice, limitTitleLength } from "../utils/functions";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product: { id,thumbnail, discountPercentage, brand, title, price }}) => {
@@ -20,11 +20,11 @@ const ProductCard = ({ product: { id,thumbnail, discountPercentage, brand, title
       ) : null}
       <div className="h-full flex flex-col gap-4">
         <div className="flex flex-col flex-1">
-          <h3 className="text-sm font-semibold text-gray-900 uppercase leading-normal">
+          <h3 className="text-md font-semibold text-gray-900 uppercase leading-normal">
             {brand}
           </h3>
-          <h2 className="text-sm text-[#666] uppercase tracking-wider leading-normal">
-            {title}
+          <h2 className="mt-1 text-sm text-[#666] uppercase tracking-wider leading-normal">
+            {limitTitleLength(title)}
           </h2>
         </div>
         <div className="flex items-center gap-2">

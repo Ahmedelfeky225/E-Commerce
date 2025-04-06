@@ -7,7 +7,11 @@ const RootLayout = () => {
   return (
     <>
       <Navbar/>
-      <Outlet/>
+    
+       <div className='py-5'>
+          <Outlet/> 
+       </div>
+    
       <Footer/>
     </>
   )

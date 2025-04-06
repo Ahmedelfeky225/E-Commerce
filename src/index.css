@@ -5,6 +5,8 @@
 body {
     font-family: "Manrope", sans-serif;
     box-sizing: border-box !important;
+    scroll-behavior: smooth !important;
+
   }
   
   *{
@@ -34,8 +36,55 @@ body {
     object-fit: cover;
     }
 
+    .iiz__zoom-img {
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    .iiz {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    a.active{
+      font-weight: 600;
+    }
+
+
+    .swiper-button-next, .swiper-button-prev {
+      width: 50px !important;
+      height: 50px !important;
+      color: #e0dddd !important; 
+      background-color: #230b4581; 
+      padding: 10px;
+      border-radius: 20%;
+      transition:  background-color 0.3s ease;
+      margin: 0 -10px;
+    }
+    .swiper-button-next::after,.swiper-button-prev::after{
+      font-size: 27px !important; 
+    }
+    .swiper-button-next:hover, .swiper-button-prev:hover {
+      background-color: #230b45; 
+    }
+    .swiper-pagination-bullet {
+      display: none !important;
+    }
+
     @media (max-width:767px) {
       .swiper-slide img{
         height: 50vh !important;
+      }
+      .swiper-button-next, .swiper-button-prev {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+      }
+      .swiper-button-next::after,.swiper-button-prev::after{
+        font-size: 20px !important; 
       }
     }
