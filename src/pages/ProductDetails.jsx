@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchProductById, clearSelectedProduct } from "../app/features/product/productSlice";
 import { calculateDiscountPrice } from "../utils/functions";
-import { ChevronLeft, Maximize2, X } from "lucide-react";
+import { ChevronLeft, Expand, X } from "lucide-react";
 import InnerImageZoom from "react-inner-image-zoom";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import 'react-inner-image-zoom/lib/styles.min.css';
+
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -77,9 +78,9 @@ const ProductDetails = () => {
           </div>
             <button
               onClick={openFullscreen}
-              className="absolute top-2 right-2 bg-gray-800 text-white p-2 rounded-md hover:bg-gray-700 focus:outline-none"
+              className="absolute top-2 right-2 bg-gray-800 text-white p-[5px] rounded-md hover:bg-gray-700 focus:outline-none transition-transform duration-300 hover:scale-110"
             >
-              <Maximize2 size={20} />
+             <Expand size={30} className="border-gray-100 border-2 rounded-md p-[2px]"/>
             </button>
           </div>
         </div>

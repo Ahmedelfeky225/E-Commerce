@@ -10,6 +10,7 @@ import LoginPage from "../pages/Login";
 import PageNotFound from "../pages/PageNotFound";
 import ProductDetails from "../pages/ProductDetails"; // استيراد صفحة تفاصيل المنتج
 import ErrorHandler from "../components/errors/ErrorHandler";
+import RegisterPage from "../pages/Register";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +23,7 @@ const router = createBrowserRouter(
         <Route path="offers" element={<OffersPage />} />
         <Route path="contact-us" element={<ContactPage />} />
         <Route path="login" element={<LoginPage />} />
-        
+        <Route path="register" element={<RegisterPage />} />
         {/* إضافة مسار تفاصيل المنتج */}
         <Route path="product/:id" element={<ProductDetails />} />
       </Route>

@@ -40,7 +40,7 @@ const CategoriesPage = () => {
   const productsToDisplay = selectedCategory && productsByCategory[selectedCategory] ? productsByCategory[selectedCategory] : [];
 
   return (
-    <div className='container mx-auto max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl py-20 px-3 flex flex-col gap-4'>
+    <div className='container mx-auto max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl py-20 px-3 flex flex-col gap-5'>
       <button
         onClick={() => navigate(-1)}
         className="w-fit bg-[#eee] hover:bg-[#ddd] text-gray-900 rounded-full pl-2 pr-4 py-1 flex justify-center item-center"

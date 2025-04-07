@@ -8,7 +8,7 @@ const RootLayout = () => {
     <>
       <Navbar/>
     
-       <div className='py-5'>
+       <div className='py-5 px-2'>
           <Outlet/> 
        </div>
     
