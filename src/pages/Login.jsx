@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   const renderFormInput = LOGIN_FORM.map(({name,placeholder,type,validation},idx)=>(
     <Fragment key={idx}>
-      <Input placeholder={placeholder} type={type} />
+      <Input placeholder={placeholder} type={type} className="focus:border-[#1a0c31] focus:ring-1 focus:ring-[#1a0c31] hover:border-[#000000de] " />
     </Fragment>
   ))
   return (

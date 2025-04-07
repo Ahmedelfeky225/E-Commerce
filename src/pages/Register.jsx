@@ -21,6 +21,7 @@ const RegisterPage = () => {
       placeholder="Username"
       value={email} 
       onChange={handleInputChange} 
+      className="focus:border-[#1a0c31] focus:ring-1 focus:ring-[#1a0c31] hover:border-[#000000de]"
     />
 
       <Input 

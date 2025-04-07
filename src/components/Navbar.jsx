@@ -1,8 +1,10 @@
 import { CircleUserRound, Menu, Search, ShoppingBag } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import SearchPage from '../pages/SearchPage'
 
 const Navbar = () => {
+    const [openSearchPage,setOpenSearchPage] = useState(null)
   return (
     <>
     <nav className='shadow-sm bg-white py-[15px] fixed left-0 right-0 z-50 px-3'>
@@ -34,9 +36,9 @@ const Navbar = () => {
                 <option>Arabic</option>
               </select>
             </li>
-            <li>
-            <Search />
-            </li>
+            <button onClick={() =>setOpenSearchPage(true)}>
+                 <Search size={20} />
+            </button>
             <li>
             <ShoppingBag />
             </li>
@@ -68,6 +70,7 @@ const Navbar = () => {
         </NavLink>
     </div>
     {/* Fixed Bottom Navigation in small screen */}
+    {openSearchPage && <SearchPage setOpenSearchPage={setOpenSearchPage}/>}
     </>
   )
 }

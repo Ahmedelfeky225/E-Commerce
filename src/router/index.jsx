@@ -11,6 +11,7 @@ import PageNotFound from "../pages/PageNotFound";
 import ProductDetails from "../pages/ProductDetails"; // استيراد صفحة تفاصيل المنتج
 import ErrorHandler from "../components/errors/ErrorHandler";
 import RegisterPage from "../pages/Register";
+import SearchPage from "../pages/SearchPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

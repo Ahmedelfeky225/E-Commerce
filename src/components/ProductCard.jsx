@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product: { id,thumbnail, discountPercentage, brand, title, price }}) => {
   return (
     <div className="overflow-hidden relative shadow-sm hover:scale-110 transition duration-300 flex flex-col pb-4 px-3">
-     <Link to = {`/product/${id}`}>
+     <Link to = {`/product/${id}`} reloadDocument>
         <img
           src={thumbnail}
           alt={`Image of ${title}`}
