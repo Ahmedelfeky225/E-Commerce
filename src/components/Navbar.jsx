@@ -10,7 +10,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import SearchPage from "../pages/SearchPage";
 import { useSelector } from "react-redux";
-import { bagSelector } from "../app/features/bag/BagSlice";
+import { bagSelector } from "../app/features/bag/bagSlice";
 import Drawer from "../components/Drawer";
 import { useAuth } from "../context/AuthContext";
 import Button from "../components/ui/Button";

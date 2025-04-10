@@ -2,7 +2,7 @@ import { Share2 } from "lucide-react";
 import { calculateDiscountPrice, limitTitleLength } from "../utils/functions";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItemToBagAction } from "../app/features/bag/BagSlice";
+import { addItemToBagAction } from "../app/features/bag/bagSlice";
 import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
