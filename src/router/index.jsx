@@ -1,4 +1,8 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 import RootLayout from "../pages/Layout";
 
 import CategoriesPage from "../pages/Categories";
@@ -12,6 +16,8 @@ import ProductDetails from "../pages/ProductDetails"; // استيراد صفحة
 import ErrorHandler from "../components/errors/ErrorHandler";
 import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
+import AuthProvider from "../context/AuthContext";
+import ForgotPasswordPage from "../pages/ForgotPassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,8 +29,9 @@ const router = createBrowserRouter(
         <Route path="brands" element={<BrandsPage />} />
         <Route path="offers" element={<OffersPage />} />
         <Route path="contact-us" element={<ContactPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="/auth/login" element={<LoginPage />} />
+        <Route path="/auth/register" element={<RegisterPage />} />
+        <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
         {/* إضافة مسار تفاصيل المنتج */}
         <Route path="product/:id" element={<ProductDetails />} />
       </Route>

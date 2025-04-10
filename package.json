@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@reduxjs/toolkit": "^2.6.1",
     "daisyui": "^5.0.12",
+    "firebase": "^11.6.0",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.484.0",
@@ -23,6 +24,7 @@
     "react-inner-image-zoom": "^4.0.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.1",
+    "react-toastify": "^11.0.5",
     "sort-by": "^1.2.0",
     "swiper": "^11.2.6",
     "yup": "^1.6.1"
