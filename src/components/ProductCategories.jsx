@@ -6,7 +6,9 @@ import SkeletonLoader from "./SkeletonLoader";
 
 const ProductCategories = () => {
   const dispatch = useDispatch();
-  const { productsByCategory, loading: productsLoading } = useSelector((state) => state.products);
+  const { productsByCategory, loading: productsLoading } = useSelector(
+    (state) => state.products
+  );
 
   // الكاتيجوريات المحددة
   const categories = ["fragrances", "sports-accessories", "laptops"];
@@ -30,17 +32,15 @@ const ProductCategories = () => {
             <h2 className="text-2xl font-bold capitalize mb-6 text-gray-800 pb-2">
               {category.replace("-", " ")}
             </h2>
-              {productsLoading && !categoryProducts.length ? (
-            <SkeletonLoader/>
-                
-              ) : 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
-             {   categoryProducts.slice(0, 10).map((product) => (
+            {productsLoading && !categoryProducts.length ? (
+              <SkeletonLoader />
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
+                {categoryProducts.slice(0, 10).map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
-              
               </div>
-              }
+            )}
           </section>
         );
       })}

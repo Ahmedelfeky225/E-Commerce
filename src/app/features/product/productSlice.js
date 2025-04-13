@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getProducts, getProductById } from "./productApi";
 
 const initialState = {
-  productsByCategory: {}, // تخزين المنتجات حسب كل كاتيجوري
-  selectedProduct: null, // المنتج المحدد
+  productsByCategory: {},
+  selectedProduct: null,
+  allProducts: [],
   loading: false,
   error: null,
 };
 
-// جلب المنتجات حسب الفئة
 export const fetchProducts = createAsyncThunk(
   "products/getProducts",
   async (category) => {
@@ -17,7 +17,6 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-// جلب منتج معين حسب الـ ID
 export const fetchProductById = createAsyncThunk(
   "products/getProductById",
   async (id) => {
@@ -26,6 +25,13 @@ export const fetchProductById = createAsyncThunk(
   }
 );
 
+export const fetchAllProducts = createAsyncThunk(
+  "products/fetchAllProducts",
+  async () => {
+    const res = await getProducts(); // بدون category
+    return res;
+  }
+);
 export const productSlice = createSlice({
   name: "products",
   initialState,
@@ -60,6 +66,18 @@ export const productSlice = createSlice({
         state.selectedProduct = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchAllProducts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allProducts = action.payload;
+      })
+      .addCase(fetchAllProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

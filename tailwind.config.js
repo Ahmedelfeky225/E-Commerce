@@ -2,15 +2,15 @@
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,jsx}"],
+  darkMode: "class",
+  content: ["./src/**/*.{html,js,jsx,tsx}"],
   theme: {
     extend: {
-      screens:{
-        'md-max':'991px',
-        'sm-max':'576px'
-      }
+      screens: {
+        "md-max": "991px",
+        "sm-max": "576px",
+      },
     },
   },
   // plugins: [daisyui],
-}
-
+};
