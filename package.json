@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@reduxjs/toolkit": "^2.6.1",
+    "@stripe/react-stripe-js": "^3.6.0",
     "daisyui": "^5.0.12",
     "firebase": "^11.6.0",
     "localforage": "^1.10.0",

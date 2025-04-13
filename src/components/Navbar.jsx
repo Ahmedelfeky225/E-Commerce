@@ -58,6 +58,7 @@ const Navbar = () => {
           <ul className="hidden md-max:flex gap-5">
             <li>
               <NavLink
+                reloadDocument
                 to="/"
                 className="text-gray-600 hover:text-purple-800 transition-colors"
               >
@@ -66,6 +67,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
+                reloadDocument
                 to="/categories"
                 className="text-gray-600 hover:text-purple-800 transition-colors"
               >
@@ -82,6 +84,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
+                reloadDocument
                 to="/offers"
                 className="text-gray-600 hover:text-purple-800 transition-colors"
               >
@@ -90,6 +93,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
+                reloadDocument
                 to="/contact-us"
                 className="text-gray-600 hover:text-purple-800 transition-colors"
               >

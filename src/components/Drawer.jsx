@@ -5,10 +5,12 @@ import { bagSelector, removeItemFormBag } from "../app/features/bag/bagSlice";
 import { calculateDiscountPrice, limitTitleLength } from "../utils/functions";
 import { updateItemQty } from "../app/features/bag/bagSlice";
 import Button from "../components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 const Drawer = ({ onClose }) => {
   const { bagItems } = useSelector(bagSelector);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const totalPrice = bagItems.reduce((sum, product) => {
     return (
@@ -108,9 +110,14 @@ const Drawer = ({ onClose }) => {
           )}
         </div>
         <div className="checkout p-6 my-6">
-          <Button disabled={bagItems.length === 0}>
+          <Button
+            disabled={bagItems.length === 0}
+            onClick={() => {
+              navigate("/checkout/payment");
+            }}
+          >
             Checkout{" "}
-            {bagItems.length > 0 ? `- ${totalPrice.toFixed(2)} KWD` : ""}{" "}
+            {bagItems.length > 0 ? ` ${totalPrice.toFixed(2)} KWD` : ""}{" "}
           </Button>
         </div>
       </div>

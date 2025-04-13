@@ -18,6 +18,10 @@ import RegisterPage from "../pages/Register";
 import SearchPage from "../pages/SearchPage";
 import AuthProvider from "../context/AuthContext";
 import ForgotPasswordPage from "../pages/ForgotPassword";
+import PaymentPage from "../pages/Payment";
+import CancelPage from "../pages/Cancel";
+import SuccessPage from "../pages/Success";
+import BrandProductsPage from "../pages/BrandProductsPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +36,11 @@ const router = createBrowserRouter(
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/register" element={<RegisterPage />} />
         <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/checkout/payment" element={<PaymentPage />} />
+        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/cancel" element={<CancelPage />} />
+        <Route path="/brands/:brandName" element={<BrandProductsPage />} />
+
         {/* إضافة مسار تفاصيل المنتج */}
         <Route path="product/:id" element={<ProductDetails />} />
       </Route>
