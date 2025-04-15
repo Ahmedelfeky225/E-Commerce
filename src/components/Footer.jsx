@@ -1,6 +1,7 @@
 // Footer.jsx
 import { Link } from "react-router-dom";
 import { Instagram, Twitter, MessageCircle } from "lucide-react";
+import { t } from "i18next";
 
 const Footer = () => {
   return (
@@ -10,31 +11,34 @@ const Footer = () => {
     >
       <div className="container mx-auto max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl  2xl:max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
         <div>
-          <h3 className="text-lg font-bold mb-6 uppercase">Shop With Us</h3>
+          <h3 className="text-lg font-bold mb-6 uppercase">
+            {t("Shop With Us")}
+          </h3>
           <ul className="space-y-2">
             <li>
               <Link reloadDocument to="/" className="hover:underline">
-                Home
+                {t("Home")}
               </Link>
             </li>
             <li>
               <Link reloadDocument to="/auth/login" className="hover:underline">
-                Login
+                {" "}
+                {t("Login")}
               </Link>
             </li>
             <li>
               <Link reloadDocument to="/categories" className="hover:underline">
-                Categories
+                {t("Categories")}
               </Link>
             </li>
             <li>
               <Link reloadDocument to="/brands" className="hover:underline">
-                Brands
+                {t("Brands")}
               </Link>
             </li>
             <li>
               <Link reloadDocument to="/offers" className="hover:underline">
-                Offers
+                {t("Offers")}
               </Link>
             </li>
           </ul>
@@ -47,68 +51,73 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-6 uppercase">Let Us Help You</h3>
+          <h3 className="text-lg font-bold mb-6 uppercase">
+            {t("Let Us Help You")}
+          </h3>
           <ul className="space-y-2">
             <li>
               <a href="#" className="hover:underline">
-                Delete Account
+                {t("Delete Account")}
               </a>
             </li>
             <li>
               <a href="#" className="hover:underline">
-                FAQ
+                {t("FAQ")}
               </a>
             </li>
             <li>
               <a href="#" className="hover:underline">
-                Terms and Conditions
+                {t("Terms and Conditions")}
               </a>
             </li>
             <li>
               <a href="#" className="hover:underline">
-                Privacy Policy
+                {t("Privacy Policy")}
               </a>
             </li>
             <li>
               <a href="#" className="hover:underline">
-                About Us
+                {t("About Us")}
               </a>
             </li>
             <li>
               <Link to="/contact-us" className="hover:underline">
-                Contact Us
+                {t("Contact Us")}
               </Link>
             </li>
             <li>
               <a href="#" className="hover:underline">
-                Tracking Order
+                {t("Tracking Order")}
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-6 uppercase">Subscribe Now</h3>
+          <h3 className="text-lg font-bold mb-6 uppercase">
+            {t("Subscribe Now")}
+          </h3>
           <p className="mb-6">
-            Subscribe to our newsletter to get updates, special offers.
+            {t("Subscribe to our newsletter to get updates, special offers.")}
           </p>
           <div>
             <form className="flex flex-col space-y-3">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={t("Enter your email address")}
                 className="p-2 rounded bg-transparent text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button className="bg-white w-fit text-gray-900 font-semibold py-2 px-4  hover:bg-gray-200">
-                Subscribe
+                {" "}
+                {t("Subscribe")}
               </button>
             </form>
           </div>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold mb-6 uppercase">Follow Us</h3>
-          <div className="flex space-x-4 mb-6">
+          <h3 className="text-lg font-bold mb-6 uppercase">{t("Follow Us")}</h3>
+          <div className="flex space-x-4 mb-6 gap-2">
             <a
               target="_blank"
               href="https://www.instagram.com/briggekw/"
@@ -124,33 +133,35 @@ const Footer = () => {
               <MessageCircle size={24} />
             </a>
           </div>
-          <h3 className="text-lg font-bold mb-6 uppercase">Download Now</h3>
-          <div className="flex space-x-4">
+          <h3 className="text-lg font-bold mb-6 uppercase">
+            {t("Download Now")}
+          </h3>
+          <div className="flex space-x-4 gap-2">
             <a
               target="_blank"
               href="https://play.google.com/store/apps/details?id=com.gatetechs.kishk&pli=1"
-              className="flex items-center bg-white text-gray-900 py-2 px-4 rounded hover:bg-gray-200"
+              className="flex items-center bg-white text-gray-900 py-2 px-4 rounded hover:bg-gray-200 gap-1"
             >
               <img
                 src="/images/googlePlay.webp"
                 alt="apple"
                 className="w-6 h-6"
               />
-              Play Store
+              <span>{t("Play Store")}</span>
             </a>
             <a
               target="_blank"
               href="https://apps.apple.com/us/app/brigge/id6450512325"
-              className="flex items-center bg-white text-gray-900 py-2 px-2 gap-2 rounded hover:bg-gray-200"
+              className="flex items-center bg-white text-gray-900 py-2 px-2 gap-1 rounded hover:bg-gray-200"
             >
               <img src="/images/apple.webp" alt="apple" className="w-6 h-6" />
-              Apple Store
+              <span>{t("Apple Store")}</span>
             </a>
           </div>
         </div>
       </div>
       <div className="text-center mt-8 text-gray-100 text-[13px] bg-[#1f1137] py-6 dark:bg-gray-900 ">
-        All Rights Reserved © 2025 Bridge
+        {t("All Rights Reserved © 2025 Bridge")}
       </div>
     </footer>
   );

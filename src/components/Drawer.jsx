@@ -6,6 +6,7 @@ import { calculateDiscountPrice, limitTitleLength } from "../utils/functions";
 import { updateItemQty } from "../app/features/bag/bagSlice";
 import Button from "../components/ui/Button";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
 
 const Drawer = ({ onClose }) => {
   const { bagItems } = useSelector(bagSelector);
@@ -33,7 +34,7 @@ const Drawer = ({ onClose }) => {
       {/* Drawer Content */}
       <div className="absolute right-0 top-0 h-full w-96 bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
         <div className="flex justify-between items-center mb-4 px-6">
-          <h2 className="text-2xl font-bold"> Bag</h2>
+          <h2 className="text-2xl font-bold">{t("Bag")}</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-black text-2xl font-bold"
@@ -105,7 +106,7 @@ const Drawer = ({ onClose }) => {
             ))
           ) : (
             <span className="text-center text-lg text-gray-500 dark:text-gray-400">
-              There are no data yet
+              {t("There are no data yet")}
             </span>
           )}
         </div>
@@ -116,7 +117,7 @@ const Drawer = ({ onClose }) => {
               navigate("/checkout/payment");
             }}
           >
-            Checkout{" "}
+            {t("Checkout")}{" "}
             {bagItems.length > 0 ? ` ${totalPrice.toFixed(2)} KWD` : ""}{" "}
           </Button>
         </div>

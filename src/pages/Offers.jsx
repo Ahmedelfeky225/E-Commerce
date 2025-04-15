@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../app/features/product/productSlice";
 import ProductCard from "../components/ProductCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { t } from "i18next";
 
 const OfferPage = () => {
   const numberOfProducts = 20;
@@ -63,7 +64,9 @@ const OfferPage = () => {
   }
   return (
     <div className="mt-20 container mx-auto  max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl  my-4">
-      <h2 className="font-bold text-xl mb-3">Products ({offers.length})</h2>
+      <h2 className="font-bold text-xl mb-3">
+        {t("Products")} ({offers.length})
+      </h2>
       {currentProducts.length > 0 ? (
         <ul
           className="grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 justify-between gap-6

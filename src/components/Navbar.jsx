@@ -18,6 +18,8 @@ import { useAuth } from "../context/AuthContext";
 import Button from "../components/ui/Button";
 import { toast } from "react-toastify";
 
+import { useTranslation } from "react-i18next";
+
 const Navbar = () => {
   const [openSearchPage, setOpenSearchPage] = useState(null);
   const [drawer, setDrawer] = useState(false);
@@ -27,6 +29,7 @@ const Navbar = () => {
   const { bagItems } = useSelector(bagSelector);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -38,7 +41,6 @@ const Navbar = () => {
         document.documentElement.classList.remove("dark");
       }
     } else {
-      // لو مفيش إعداد محفوظ، استخدم تفضيلات النظام (اختياري)
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
@@ -73,14 +75,18 @@ const Navbar = () => {
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => {
       const newMode = !prev;
-      // احفظ الإعداد في localStorage
       localStorage.setItem("theme", newMode ? "dark" : "light");
-      // غير الـ Theme على الصفحة
       document.documentElement.classList.toggle("dark");
       return newMode;
     });
   };
 
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    console.log("Changing language to:", lang); // تأكد من أن اللغة تتغير بشكل صحيح
+
+    document.dir = lang === "ar" ? "rtl" : "ltr";
+  };
   return (
     <>
       <nav className="shadow-sm bg-white dark:bg-gray-900 dark:border-gray-800 dark:border-b dark:text-white py-[15px] fixed left-0 right-0 z-50 px-3">
@@ -96,7 +102,7 @@ const Navbar = () => {
                 to="/"
                 className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
               >
-                Home
+                {t("Home")}
               </NavLink>
             </li>
             <li>
@@ -105,7 +111,7 @@ const Navbar = () => {
                 to="/categories"
                 className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
               >
-                Categories
+                {t("Categories")}
               </NavLink>
             </li>
             <li>
@@ -113,7 +119,7 @@ const Navbar = () => {
                 to="/brands"
                 className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
               >
-                Brands
+                {t("Brands")}
               </NavLink>
             </li>
             <li>
@@ -122,7 +128,7 @@ const Navbar = () => {
                 to="/offers"
                 className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
               >
-                Offers
+                {t("Offers")}
               </NavLink>
             </li>
             <li>
@@ -131,16 +137,19 @@ const Navbar = () => {
                 to="/contact-us"
                 className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
               >
-                Contact Us
+                {t("Contact Us")}
               </NavLink>
             </li>
           </ul>
 
           <ul className="flex items-center gap-4">
             <li>
-              <select className="border-0 outline-0 text-black p-2 focus:ring-2 focus:ring-purple-800 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white">
-                <option>English</option>
-                <option>Arabic</option>
+              <select
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="border-0 outline-0 text-black p-2 focus:ring-2 focus:ring-purple-800 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white"
+              >
+                <option value="en">English</option>
+                <option value="ar">Arabic</option>
               </select>
             </li>
             <button
@@ -191,7 +200,7 @@ const Navbar = () => {
                           disabled={loading}
                           className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50 dark:hover:bg-gray-700 dark:text-white"
                         >
-                          {loading ? "Logging out..." : "Log out"}
+                          {loading ? "Logging out..." : t("Log out")}
                         </Button>
                       </div>
                     )}

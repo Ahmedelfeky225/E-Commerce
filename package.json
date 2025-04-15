@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.0.1",
     "@reduxjs/toolkit": "^2.6.1",
     "@stripe/react-stripe-js": "^3.6.0",
     "daisyui": "^5.0.12",
     "firebase": "^11.6.0",
+    "i18next": "^25.0.0",
     "localforage": "^1.10.0",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.484.0",
@@ -23,6 +25,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
+    "react-i18next": "^15.4.1",
     "react-inner-image-zoom": "^4.0.1",
     "react-international-phone": "^4.5.0",
     "react-phone-number-input": "^3.4.12",

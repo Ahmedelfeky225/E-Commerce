@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemToBagAction } from "../app/features/bag/bagSlice";
 import { toast } from "react-toastify";
+import { t } from "i18next";
 
 const ProductCard = ({ product }) => {
   const { id, thumbnail, discountPercentage, brand, title, price } = product;
@@ -65,7 +66,7 @@ const ProductCard = ({ product }) => {
             className="text-[12px] sm:text-base bg-[#230b45] hover:bg-[#230b45e3] text-white py-2 px-4 font-medium w-full dark:bg-white dark:text-black"
             onClick={addProductToBag}
           >
-            Buy Now
+            {t("Buy Now")}
           </button>
           <span className="border p-2 h-full flex justify-center items-center">
             <Share2 size={18} />

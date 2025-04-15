@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../app/features/product/productSlice";
 import ProductCard from "./ProductCard";
 import SkeletonLoader from "./SkeletonLoader";
+import { t } from "i18next";
 
 const ProductCategories = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const ProductCategories = () => {
         return (
           <section key={category} className="pb-6">
             <h2 className="text-2xl font-bold capitalize mb-6 text-gray-800 pb-2 dark:text-gray-300">
-              {category.replace("-", " ")}
+              {t(category.replace("-", " "))}
             </h2>
             {productsLoading && !categoryProducts.length ? (
               <SkeletonLoader />
