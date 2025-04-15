@@ -66,7 +66,7 @@ const OfferPage = () => {
       <h2 className="font-bold text-xl mb-3">Products ({offers.length})</h2>
       {currentProducts.length > 0 ? (
         <ul
-          className="grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 justify-between
+          className="grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 justify-between gap-6
         "
         >
           {currentProducts.map((product) => (
@@ -98,8 +98,8 @@ const OfferPage = () => {
                   onClick={() => handlePageClick(pageNumber)}
                   className={`px-0 md:px-2 text-lg font-medium ${
                     currentPage === pageNumber
-                      ? "border-black border-b-2 text-black"
-                      : "text-gray-300"
+                      ? "border-black border-b-2 text-black dark:border-gray-300 dark:text-gray-300"
+                      : "text-gray-700"
                   }`}
                 >
                   {pageNumber}

@@ -4,7 +4,10 @@ import { Instagram, Twitter, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#230b45] text-white pt-10">
+    <footer
+      className="bg-[#230b45] text-white pt-10 dark:bg-gray-900 shadow-2xl dark:shadow-lg dark:border-t dark:border-gray-800
+    "
+    >
       <div className="container mx-auto max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl  2xl:max-w-7xl grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
         <div>
           <h3 className="text-lg font-bold mb-6 uppercase">Shop With Us</h3>
@@ -146,7 +149,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mt-8 text-gray-100 text-[13px] bg-[#1f1137] py-6">
+      <div className="text-center mt-8 text-gray-100 text-[13px] bg-[#1f1137] py-6 dark:bg-gray-900 ">
         All Rights Reserved © 2025 Bridge
       </div>
     </footer>

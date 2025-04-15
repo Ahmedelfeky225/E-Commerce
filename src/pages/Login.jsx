@@ -65,10 +65,10 @@ const LoginPage = () => {
         Don't have an account?{" "}
         <Link
           to="/auth/register"
-          className="ml-2 font-semibold relative text-gray-600 hover:text-blue-600 transition-all duration-500 ease-in-out group inline-block focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+          className="ml-2 font-semibold relative text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-all duration-500 ease-in-out group inline-block focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
         >
           Create One
-          <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-blue-600 transition-all duration-500 ease-in-out group-hover:w-full"></span>
+          <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-blue-600 dark:bg-gray-400 transition-all duration-500 ease-in-out group-hover:w-full"></span>
         </Link>
       </p>
     </div>

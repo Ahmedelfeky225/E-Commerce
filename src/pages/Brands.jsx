@@ -133,7 +133,7 @@ const BrandsPage = () => {
               <li
                 key={index}
                 onClick={() => handleBrandClick(brand)}
-                className="bg-[#25104912] w-[180px] md:w-[200px] h-[200px] p-3 border border-gray-200 flex justify-center items-center rounded-md text-2xl font-bold text-gray-800 text-center hover:bg-[#25104923] hover:scale-105 cursor-pointer transition-all duration-200"
+                className="bg-[#25104912] w-[180px] md:w-[200px] h-[200px] p-3 border border-gray-200 flex justify-center items-center rounded-md text-2xl font-bold text-gray-800 text-center hover:bg-[#25104923] hover:scale-105 cursor-pointer transition-all duration-200 dark:bg-gray-800 dark:text-white dark:border-gray-700"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                   fontFamily: "Anton",
@@ -178,8 +178,8 @@ const BrandsPage = () => {
                     onClick={() => handlePageClick(pageNumber)}
                     className={`px-4 text-lg font-medium ${
                       currentPage === pageNumber
-                        ? "border-black border-b-2 text-black"
-                        : "text-gray-300"
+                        ? "border-black border-b-2 text-black dark:border-gray-300 dark:text-gray-300"
+                        : "text-gray-700"
                     }`}
                   >
                     {pageNumber}

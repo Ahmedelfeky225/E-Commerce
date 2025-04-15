@@ -56,7 +56,7 @@ const ContactPage = () => {
         <textarea
           rows="5"
           placeholder="Your Message"
-          className="w-full border border-gray-300 px-4 py-2 hover:border-black p-2"
+          className="w-full border border-gray-300 px-4 py-2 hover:border-black p-2 bg-transparent"
         ></textarea>
         <Button type="submit">Send Message</Button>
       </form>

@@ -29,7 +29,7 @@ const ProductCategories = () => {
 
         return (
           <section key={category} className="pb-6">
-            <h2 className="text-2xl font-bold capitalize mb-6 text-gray-800 pb-2">
+            <h2 className="text-2xl font-bold capitalize mb-6 text-gray-800 pb-2 dark:text-gray-300">
               {category.replace("-", " ")}
             </h2>
             {productsLoading && !categoryProducts.length ? (

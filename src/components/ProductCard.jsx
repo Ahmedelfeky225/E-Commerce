@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
     });
   };
   return (
-    <div className="overflow-hidden relative shadow-sm hover:scale-110 transition duration-300 flex flex-col pb-4 px-3">
+    <div className="overflow-hidden relative shadow-sm hover:scale-110 transition duration-300 flex flex-col pb-4 px-3 dark:bg-gray-900 dark:rounded-sm dark:border dark:border-gray-800">
       <Link to={`/product/${id}`} reloadDocument>
         <img
           src={thumbnail}
@@ -38,10 +38,10 @@ const ProductCard = ({ product }) => {
       ) : null}
       <div className="h-full flex flex-col gap-4">
         <div className="flex flex-col flex-1">
-          <h3 className="text-md font-semibold text-gray-900 uppercase leading-normal">
+          <h3 className="text-md font-semibold text-gray-900 uppercase leading-normal dark:text-white tracking-widest">
             {brand}
           </h3>
-          <h2 className="mt-1 text-sm text-[#666] uppercase tracking-wider leading-normal">
+          <h2 className="mt-1 text-[14px] text-[#666] uppercase tracking-widest leading-normal dark:text-[#ccc] ">
             {limitTitleLength(title)}
           </h2>
         </div>
@@ -62,7 +62,7 @@ const ProductCard = ({ product }) => {
 
         <div className="flex items-center gap-3">
           <button
-            className="text-[12px] sm:text-base bg-[#230b45] hover:bg-[#230b45e3] text-white py-2 px-4 font-medium w-full"
+            className="text-[12px] sm:text-base bg-[#230b45] hover:bg-[#230b45e3] text-white py-2 px-4 font-medium w-full dark:bg-white dark:text-black"
             onClick={addProductToBag}
           >
             Buy Now
