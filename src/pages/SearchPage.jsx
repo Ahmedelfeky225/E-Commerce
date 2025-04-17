@@ -2,6 +2,7 @@ import { Search, X } from "lucide-react";
 import Input from "../components/ui/Input";
 import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
+import { useSelector } from "react-redux";
 
 const SearchPage = ({ setOpenSearchPage }) => {
   const [query, setQuery] = useState("");
@@ -18,7 +19,7 @@ const SearchPage = ({ setOpenSearchPage }) => {
     } else {
       setResults([]);
     }
-  }, [query]);
+  }, [query, allProducts]);
 
   return (
     <div className="p-4 fixed left-0 right-0 bottom-0 top-20 bg-[#fffffffa] z-40 overflow-y-auto dark:bg-gray-900">

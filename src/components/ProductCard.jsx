@@ -33,7 +33,7 @@ const ProductCard = ({ product }) => {
         </Link>
       </div>
       {Math.round(discountPercentage) ? (
-        <span className="text-[13px] sm:text-[15px] leading-4 font-medium bg-red-500 dark:bg-yellow-600 dark:text-black w-fit text-white px-3 py-1 z-30 absolute right-0 top-8 -rotate-90">
+        <span className="text-[12px] leading-4 font-medium bg-red-500 dark:bg-yellow-600 dark:text-black w-fit text-white px-3 py-1 z-30 absolute right-[-10px] top-7 -rotate-90">
           {Math.round(discountPercentage)}% OFF
         </span>
       ) : null}
