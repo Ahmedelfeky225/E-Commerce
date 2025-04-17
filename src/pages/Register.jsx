@@ -35,7 +35,7 @@ const RegisterPage = () => {
     setLoading(false);
   };
   return (
-    <div className="text-center flex flex-col min-h-screen justify-center w-full max-w-[400px] mx-auto">
+    <div className="text-center flex flex-col min-h-screen justify-center w-full max-w-[400px] mx-auto px-[10px]">
       {error && (
         <div className="bg-red-100 text-red-700 p-3 rounded-md mb-6 shadow-sm">
           {error}

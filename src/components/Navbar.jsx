@@ -88,7 +88,11 @@ const Navbar = () => {
       <nav className="shadow-sm bg-[#ffffff] dark:bg-gray-900 dark:border-gray-800 dark:border-b dark:text-white py-[15px] fixed left-0 right-0 z-50 px-3">
         <div className="flex items-center justify-between container mx-auto max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl my-2">
           <NavLink to="/" reloadDocument className="">
-            <img src="/images/logo.webp" alt="Logo" className="w-[100px]" />
+            <img
+              src="/images/logo.webp"
+              alt="Logo"
+              className="md:w-[100px] w-[70px]"
+            />
           </NavLink>
 
           <ul className="hidden md-max:flex gap-7">

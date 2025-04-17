@@ -36,7 +36,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" text-center flex flex-col min-h-[600px] justify-center max-w-sm mx-auto">
+    <div className=" text-center flex flex-col min-h-[600px] justify-center max-w-sm mx-auto px-[10px]">
       <div className="flex flex-col gap-2">
         {error && (
           <div className="bg-red-100 text-red-700 p-3 rounded-md mb-6 shadow-sm">
