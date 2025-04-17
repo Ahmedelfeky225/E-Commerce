@@ -69,7 +69,7 @@ const OfferPage = () => {
       </h2>
       {currentProducts.length > 0 ? (
         <ul
-          className="grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 justify-between gap-6
+          className="grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2 justify-between sm:gap-6 gap-2
         "
         >
           {currentProducts.map((product) => (

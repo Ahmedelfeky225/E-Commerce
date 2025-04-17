@@ -33,16 +33,16 @@ const ProductCard = ({ product }) => {
         </Link>
       </div>
       {Math.round(discountPercentage) ? (
-        <span className="text-xs leading-4 font-medium bg-red-500 dark:bg-yellow-600 dark:text-black w-fit text-white px-3 py-1 z-30 absolute right-0 top-8 -rotate-90">
+        <span className="text-[13px] sm:text-[15px] leading-4 font-medium bg-red-500 dark:bg-yellow-600 dark:text-black w-fit text-white px-3 py-1 z-30 absolute right-0 top-8 -rotate-90">
           {Math.round(discountPercentage)}% OFF
         </span>
       ) : null}
       <div className=" h-full flex flex-col gap-4 mt-3">
         <div className="flex flex-col flex-1 px-3">
-          <h3 className="text-[15px] sm:text-base  font-semibold text-gray-900 uppercase leading-normal dark:text-white tracking-widest">
+          <h3 className="  font-semibold text-gray-900 uppercase leading-normal dark:text-white tracking-widest text-[13px] sm:text-[15px]">
             {brand}
           </h3>
-          <h2 className="mt-1 text-[13px] text-[#666] uppercase tracking-widest leading-normal dark:text-[#ccc] ">
+          <h2 className="mt-1 text-[#666] uppercase tracking-widest leading-normal dark:text-[#ccc] text-[12px] sm:text-[15px] ">
             {limitTitleLength(title)}
           </h2>
         </div>
@@ -50,17 +50,19 @@ const ProductCard = ({ product }) => {
           {Math.round(discountPercentage) ? (
             <span
               className="text-red-600 dark:text-yellow-600
-             text-[15px]"
+             text-[13px] sm:text-[15px]"
             >
               {calculateDiscountPrice(price, discountPercentage)} KWD
             </span>
           ) : null}
           {Math.round(discountPercentage) ? (
-            <span className="text-gray-400 line-through text-[15px]">
+            <span className="text-gray-400 line-through text-[13px] sm:text-[15px]">
               {price} KWD
             </span>
           ) : (
-            <span className="text-gray-900 text-[15px]">{price} KWD</span>
+            <span className="text-gray-900  text-[13px] sm:text-[15px]">
+              {price} KWD
+            </span>
           )}
         </div>
 
