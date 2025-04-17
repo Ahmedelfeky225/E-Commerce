@@ -1,8 +1,10 @@
 import {
+  AlignJustify,
   CircleUserRound,
   LogOut,
   Menu,
   Moon,
+  Percent,
   Search,
   ShoppingBag,
   Sun,
@@ -18,18 +20,18 @@ import { useAuth } from "../context/AuthContext";
 import Button from "../components/ui/Button";
 import { toast } from "react-toastify";
 
-import { useTranslation } from "react-i18next";
+import { t } from "i18next";
+import DropDownTranslate from "./DropDownTranslate";
 
 const Navbar = () => {
   const [openSearchPage, setOpenSearchPage] = useState(null);
   const [drawer, setDrawer] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const [loading, setLoading] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // الحالة الأساسية
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { bagItems } = useSelector(bagSelector);
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -81,26 +83,20 @@ const Navbar = () => {
     });
   };
 
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-    console.log("Changing language to:", lang); // تأكد من أن اللغة تتغير بشكل صحيح
-
-    document.dir = lang === "ar" ? "rtl" : "ltr";
-  };
   return (
     <>
-      <nav className="shadow-sm bg-white dark:bg-gray-900 dark:border-gray-800 dark:border-b dark:text-white py-[15px] fixed left-0 right-0 z-50 px-3">
+      <nav className="shadow-sm bg-[#ffffff] dark:bg-gray-900 dark:border-gray-800 dark:border-b dark:text-white py-[15px] fixed left-0 right-0 z-50 px-3">
         <div className="flex items-center justify-between container mx-auto max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl my-2">
           <NavLink to="/" reloadDocument className="">
             <img src="/images/logo.webp" alt="Logo" className="w-[100px]" />
           </NavLink>
 
-          <ul className="hidden md-max:flex gap-5">
+          <ul className="hidden md-max:flex gap-7">
             <li>
               <NavLink
                 reloadDocument
                 to="/"
-                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
+                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-[#ccc]"
               >
                 {t("Home")}
               </NavLink>
@@ -109,7 +105,7 @@ const Navbar = () => {
               <NavLink
                 reloadDocument
                 to="/categories"
-                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
+                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-[#ccc]"
               >
                 {t("Categories")}
               </NavLink>
@@ -117,7 +113,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/brands"
-                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
+                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-[#ccc]"
               >
                 {t("Brands")}
               </NavLink>
@@ -126,7 +122,7 @@ const Navbar = () => {
               <NavLink
                 reloadDocument
                 to="/offers"
-                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
+                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-[#ccc]"
               >
                 {t("Offers")}
               </NavLink>
@@ -135,26 +131,19 @@ const Navbar = () => {
               <NavLink
                 reloadDocument
                 to="/contact-us"
-                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-white"
+                className="text-gray-600 hover:text-purple-800 transition-colors dark:text-[#ccc]"
               >
                 {t("Contact Us")}
               </NavLink>
             </li>
           </ul>
 
-          <ul className="flex items-center gap-4">
-            <li>
-              <select
-                onChange={(e) => changeLanguage(e.target.value)}
-                className="border-0 outline-0 text-black p-2 focus:ring-2 focus:ring-purple-800 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white"
-              >
-                <option value="en">English</option>
-                <option value="ar">Arabic</option>
-              </select>
-            </li>
+          <ul className="flex items-center sm:gap-5 gap-3  ">
+            <DropDownTranslate />
+
             <button
               onClick={() => setOpenSearchPage(true)}
-              className="text-gray-600 hover:text-purple-800 dark:text-white"
+              className="text-gray-600 hover:text-purple-800 dark:text-[#ccc]"
             >
               <Search size={20} />
             </button>
@@ -179,31 +168,43 @@ const Navbar = () => {
             </li>
 
             <li className="relative">
-              <div>
+              <div className="dropdown dropdown-end">
                 {currentUser ? (
                   <>
-                    <button
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className="text-gray-600 hover:text-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-800 focus:ring-opacity-50 dark:text-white"
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-ghost btn-circle avatar duration-200"
                     >
-                      <User />
-                    </button>
-                    {isDropdownOpen && (
-                      <div className="absolute right-0 w-48 bg-white shadow-lg rounded-md py-2 z-10 dark:bg-gray-800 dark:text-white">
-                        <div className="px-4 py-2 text-sm text-gray-700 border-b dark:text-gray-200">
-                          <p className="truncate" title={currentUser.email}>
-                            {truncateEmail(currentUser.email)}
-                          </p>
-                        </div>
-                        <Button
+                      <img
+                        src="https://www.gravatar.com/avatar/?d=mp"
+                        alt="Default Avatar"
+                        className=" w-[30px] h-[30px] sm:w-10 sm:h-10 rounded-full"
+                      />
+                    </div>
+
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-sm lg:rtl:left-[7px] rtl:left-[6px] rounded-sm px-0 pb-0 pt-0 dropdown-content dropdown-contentt mt-5 z-50  shadow bg-white dark:bg-gray-800  w-44"
+                    >
+                      <li className="border-b border-gray-200 dark:border-gray-700">
+                        <p
+                          className="text-sm truncate px-3 py-3  "
+                          title={currentUser.email}
+                        >
+                          {truncateEmail(currentUser.email)}
+                        </p>
+                      </li>
+                      <li>
+                        <button
                           onClick={handleLogout}
                           disabled={loading}
-                          className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 disabled:opacity-50 dark:hover:bg-gray-700 dark:text-white"
+                          className="w-full text-left text-sm px-3 py-3 dark:text-white hover:bg-gray-100  dark:hover:bg-gray-700 disabled:opacity-50"
                         >
-                          {loading ? "Logging out..." : t("Log out")}
-                        </Button>
-                      </div>
-                    )}
+                          {loading ? t("Logging out...") : t("Log out")}
+                        </button>
+                      </li>
+                    </ul>
                   </>
                 ) : (
                   <NavLink
@@ -225,17 +226,27 @@ const Navbar = () => {
         <NavLink
           to="/"
           className="font-extrabold text-2xl text-gray-600 dark:text-white"
+          title="Home"
         >
           B
         </NavLink>
-        <NavLink to="/categories">
-          <Menu className="text-gray-600 hover:text-purple-800 dark:text-white" />
+        <NavLink to="/categories" title="categories">
+          <AlignJustify className="text-gray-600 hover:text-purple-800 dark:text-white" />
         </NavLink>
-        <NavLink to="/offers">
-          <img src="/images/tag price.png" alt="Offers" className="w-6 h-6" />
+        <NavLink to="/offers" title="offers">
+          <Percent className="text-gray-600 hover:text-purple-800 dark:text-white" />
         </NavLink>
-        <NavLink to="/brands">
-          <img src="/images/cloakroom.png" alt="Brands" className="w-6 h-6" />
+        <NavLink to="/brands" title="brands">
+          <img
+            src="/images/hanger-light.png"
+            className="w-[24px] dark:hidden"
+            alt="Light hanger icon"
+          />
+          <img
+            src="/images/hanger-dark.png"
+            className="w-[24px] dark:block hidden"
+            alt="Dark hanger icon"
+          />
         </NavLink>
         {currentUser ? (
           <button
@@ -256,7 +267,9 @@ const Navbar = () => {
       </div>
 
       {openSearchPage && <SearchPage setOpenSearchPage={setOpenSearchPage} />}
-      {drawer && <Drawer onClose={() => setDrawer(false)} />}
+      {drawer && (
+        <Drawer setDrawer={setDrawer} onClose={() => setDrawer(false)} />
+      )}
     </>
   );
 };

@@ -8,7 +8,7 @@ import Button from "../components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
 
-const Drawer = ({ onClose }) => {
+const Drawer = ({ onClose, setDrawer }) => {
   const { bagItems } = useSelector(bagSelector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +31,6 @@ const Drawer = ({ onClose }) => {
         onClick={onClose}
       ></div>
 
-      {/* Drawer Content */}
       <div className="absolute right-0 top-0 h-full w-96 bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
         <div className="flex justify-between items-center mb-4 px-6">
           <h2 className="text-2xl font-bold">{t("Bag")}</h2>
@@ -42,7 +41,6 @@ const Drawer = ({ onClose }) => {
             <X />
           </button>
         </div>{" "}
-        {/* Drawer body content here */}
         <div className="px-0 py-7 h-[75%] overflow-y-auto flex flex-col gap-6 border-t border-b">
           {bagItems.length >= 1 ? (
             bagItems.map((product) => (
@@ -115,6 +113,7 @@ const Drawer = ({ onClose }) => {
             disabled={bagItems.length === 0}
             onClick={() => {
               navigate("/checkout/payment");
+              setDrawer(false);
             }}
           >
             {t("Checkout")}{" "}

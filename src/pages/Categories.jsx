@@ -67,7 +67,7 @@ const CategoriesPage = () => {
             Array.from({ length: 12 }).map((_, index) => (
               <div
                 key={index}
-                className="w-24 h-8 bg-gray-200 rounded-lg animate-pulse"
+                className="w-24 h-8 bg-gray-200 dark:bg-gray-500 rounded-lg animate-pulse"
               />
             ))}
 
@@ -81,10 +81,10 @@ const CategoriesPage = () => {
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className={`px-4 py-2 border border-gray-100 dark:border-gray-500 rounded-lg text-sm font-medium transition-transform duration-200 ${
+                className={`px-4 py-2 border border-gray-100 dark:border-gray-600 rounded-lg text-sm font-medium transition-transform duration-200 ${
                   selectedCategory === category
                     ? "bg-[#230b45] text-white scale-105 shadow-sm dark:bg-gray-800"
-                    : "bg-[#f7f7f7] text-black hover:bg-gray-100"
+                    : "bg-[#f7f7f7] dark:bg-gray-700 dark:text-white text-black hover:bg-gray-100"
                 }`}
               >
                 {category

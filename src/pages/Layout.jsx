@@ -13,7 +13,7 @@ const RootLayout = () => {
       key={i18n.language}
     >
       <Navbar />
-      <div className="py-5 px-2">
+      <div className="py-5">
         <Outlet />
       </div>
       <Footer />

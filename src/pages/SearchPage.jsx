@@ -6,6 +6,10 @@ import ProductCard from "../components/ProductCard";
 const SearchPage = ({ setOpenSearchPage }) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const { allProducts, loading, error } = useSelector(
+    (state) => state.products
+  );
+
   useEffect(() => {
     if (query.length >= 3) {
       fetch(`https://dummyjson.com/products/search?q=${query}`)

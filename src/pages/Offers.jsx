@@ -20,7 +20,7 @@ const OfferPage = () => {
   }, [dispatch]);
 
   const offers = allProducts.filter(
-    (product) => product.discountPercentage > 0
+    (product) => product.discountPercentage > 1
   );
 
   if (loading) return <p>Loading...</p>;
@@ -51,7 +51,7 @@ const OfferPage = () => {
           {[...Array(numberOfProducts)].map((_, index) => (
             <div
               key={index}
-              className="w-[180px] h-[140px] bg-gray-100 animate-pulse rounded-md"
+              className="w-[180px] h-[140px] bg-gray-100 dark:bg-gray-600 animate-pulse rounded-md"
             ></div>
           ))}
         </div>
@@ -87,7 +87,7 @@ const OfferPage = () => {
             disabled={currentPage === 1}
             className={`p-2 rounded-full ${
               currentPage === 1
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                ? "bg-gray-300 text-gray-400 cursor-not-allowed"
                 : "bg-[#eee] hover:bg-[#ddd] text-gray-900"
             }`}
           >
@@ -115,7 +115,7 @@ const OfferPage = () => {
             disabled={currentPage === totalPages}
             className={`p-2 rounded-full ${
               currentPage === totalPages
-                ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                ? "bg-gray-300 text-gray-400 cursor-not-allowed"
                 : "bg-[#eee] hover:bg-[#ddd] text-gray-900"
             }`}
           >

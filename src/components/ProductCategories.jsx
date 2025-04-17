@@ -24,7 +24,7 @@ const ProductCategories = () => {
   }, [dispatch, productsByCategory]);
 
   return (
-    <div className="space-y-10 p-2">
+    <div className="space-y-10 ">
       {categories.map((category) => {
         const categoryProducts = productsByCategory[category] || []; // التأكد من وجود المنتجات
 
@@ -36,7 +36,7 @@ const ProductCategories = () => {
             {productsLoading && !categoryProducts.length ? (
               <SkeletonLoader />
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-4 lg:gap-6">
                 {categoryProducts.slice(0, 10).map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}

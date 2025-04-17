@@ -8,11 +8,23 @@ import { toast } from "react-toastify";
 import { t } from "i18next";
 
 const ContactPage = () => {
-  const [value, setValue] = useState("");
   const [state, handleSubmit] = useForm("xovebkol");
-
+  const [contactUs, setContactUs] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
   useEffect(() => {
     if (!state.submitting && state.succeeded) {
+      setContactUs({
+        fullName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
       toast.success("Message sent successfully");
     }
   }, [state.submitting, state.succeeded]);
@@ -26,6 +38,14 @@ const ContactPage = () => {
       toast.error("Something went wrong");
     }
   }, [state.submitting, state.errors]);
+
+  const handleInputForm = (e) => {
+    const { name, value } = e.target;
+    setContactUs((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start py-10 px-4">
@@ -55,6 +75,8 @@ const ContactPage = () => {
           placeholder={t("Full Name")}
           className="w-full border border-gray-300 hover:border-black 
           "
+          value={contactUs.fullName}
+          onChange={handleInputForm}
         />
         <div className="flex items-center gap-2 md:flex-row flex-col">
           <Input
@@ -64,14 +86,18 @@ const ContactPage = () => {
             placeholder={t("Email Adresss")}
             className="w-full border border-gray-300 hover:border-black 
           "
+            value={contactUs.email}
+            onChange={handleInputForm}
           />
           <PhoneInput
             defaultCountry="eg"
-            name={t("phone")}
+            name="phone"
             required
-            placeholder="Enter phone number"
-            value={value}
-            onChange={setValue}
+            placeholder={t("Enter phone number")}
+            value={contactUs.phone}
+            onChange={(value) =>
+              setContactUs((prev) => ({ ...prev, phone: value }))
+            }
           />
         </div>
         <div
@@ -100,13 +126,17 @@ const ContactPage = () => {
           required
           placeholder={t("Subject")}
           className="w-full border border-gray-300 hover:border-black"
+          value={contactUs.subject}
+          onChange={handleInputForm}
         />
         <textarea
           rows="5"
           name="message"
           required
           placeholder={t("Your Message")}
-          className="w-full border border-gray-300 px-4 py-2 hover:border-black p-2 bg-transparent"
+          className="w-full border border-gray-300 px-4 py-2 focus:outline-none hover:border-black p-2 bg-transparent dark:focus:border-gray-700  dark:hover:border-gray-700 dark:border-gray-800"
+          value={contactUs.message}
+          onChange={handleInputForm}
         ></textarea>
         <Button type="submit" disabled={state.submitting}>
           {state.submitting ? "Sending..." : t("Send Message")}

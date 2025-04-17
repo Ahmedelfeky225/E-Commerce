@@ -26,7 +26,6 @@ body {
   bottom: 20px !important;
   left: auto !important ;
   width: auto !important;
-  /* background-color: red; */
 }
 
 .swiper-slide img {
@@ -86,6 +85,14 @@ a.active {
   width: 100% !important;
 }
 
+.submenu::-webkit-scrollbar {
+  display: none;
+}
+
+.submenu {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .react-international-phone-country-selector-button {
   border: 1px solid #c4c4c4;
   padding: 22px 10px !important;
@@ -100,6 +107,37 @@ a.active {
 
 .react-international-phone-flag-emoji {
   width: 18px !important;
+}
+
+.dropdown-content::before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: 2.5rem;
+  border-width: 12px;
+  border-style: solid;
+  border-color: transparent transparent #fff5f5 transparent; /* ظل خارجي */
+  z-index: 9998;
+}
+
+.dark .dropdown-content::before {
+  border-color: transparent transparent #1f2937 transparent;
+}
+
+.dropdown-contentt::before {
+  right: 0 !important;
+}
+
+[dir="rtl"] .dropdown-contentt::before {
+  right: 152px !important;
+}
+
+.dark a.active {
+  color: white !important;
+}
+.card {
+  border: 1px solid rgba(211, 200, 200, 0.314);
+  border-radius: 0.125rem !important;
 }
 @media (max-width: 767px) {
   .swiper-slide img {
@@ -117,5 +155,9 @@ a.active {
   }
   .react-international-phone-input-container {
     width: 100% !important;
+  }
+  .avatar img {
+    width: 30px !important;
+    height: 30px !important;
   }
 }

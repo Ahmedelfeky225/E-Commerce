@@ -81,7 +81,7 @@ const BrandsPage = () => {
           {[...Array(6)].map((_, index) => (
             <div
               key={index}
-              className="w-[180px] h-[140px] bg-gray-100 animate-pulse rounded-md"
+              className="w-[180px] h-[140px] bg-gray-100 dark:bg-gray-700 animate-pulse rounded-md"
             ></div>
           ))}
         </div>

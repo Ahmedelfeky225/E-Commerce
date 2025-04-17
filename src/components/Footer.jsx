@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Twitter, MessageCircle } from "lucide-react";
 import { t } from "i18next";
+import DropDownTranslate from "./DropDownTranslate";
 
 const Footer = () => {
   return (
@@ -43,10 +44,7 @@ const Footer = () => {
             </li>
           </ul>
           <div className="mt-6">
-            <select className=" border-0 outline-0 text-black p-2">
-              <option>English</option>
-              <option>Arabic</option>
-            </select>
+            <DropDownTranslate />
           </div>
         </div>
 
@@ -160,7 +158,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mt-8 text-gray-100 text-[13px] bg-[#1f1137] py-6 dark:bg-gray-900 ">
+      <div className="text-center tracking-wider mt-8 text-gray-100 text-[13px] bg-[#1f1137] dark:text-yellow-600 py-6 dark:bg-gray-900 ">
         {t("All Rights Reserved © 2025 Bridge")}
       </div>
     </footer>
