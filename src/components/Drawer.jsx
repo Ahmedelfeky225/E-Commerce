@@ -31,8 +31,8 @@ const Drawer = ({ onClose, setDrawer }) => {
         onClick={onClose}
       ></div>
 
-      <div className="absolute right-0 top-0 h-full w-96 px-4 bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
-        <div className="flex justify-between items-center mb-4 px-6">
+      <div className="absolute right-0 top-0 h-full w-96 bg-white  dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
+        <div className="flex justify-between items-center mb-4 pl-12 pr-4 sm:px-6">
           <h2 className="text-2xl font-bold">{t("Bag")}</h2>
           <button
             onClick={onClose}
@@ -108,17 +108,19 @@ const Drawer = ({ onClose, setDrawer }) => {
             </span>
           )}
         </div>
-        <div className="checkout p-6 my-6">
-          <Button
-            disabled={bagItems.length === 0}
-            onClick={() => {
-              navigate("/checkout/payment");
-              setDrawer(false);
-            }}
-          >
-            {t("Checkout")}{" "}
-            {bagItems.length > 0 ? ` ${totalPrice.toFixed(2)} KWD` : ""}{" "}
-          </Button>
+        <div>
+          <div className="checkout  my-6 w-[85%] ml-[45px] sm:ml-[30px]">
+            <Button
+              disabled={bagItems.length === 0}
+              onClick={() => {
+                navigate("/checkout/payment");
+                setDrawer(false);
+              }}
+            >
+              {t("Checkout")}{" "}
+              {bagItems.length > 0 ? ` ${totalPrice.toFixed(2)} KWD` : ""}{" "}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
