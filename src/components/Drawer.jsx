@@ -31,7 +31,7 @@ const Drawer = ({ onClose, setDrawer }) => {
         onClick={onClose}
       ></div>
 
-      <div className="absolute right-0 top-0 h-full w-96 bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
+      <div className="absolute right-0 top-0 h-full w-96 px-4 bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 py-4">
         <div className="flex justify-between items-center mb-4 px-6">
           <h2 className="text-2xl font-bold">{t("Bag")}</h2>
           <button
