@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSelector } from "react-redux";
 import { bagSelector } from "../app/features/bag/bagSlice";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 // Stripe public key
 const stripePromise = loadStripe(
@@ -46,34 +48,29 @@ const CheckoutFormPage = () => {
     <div className="w-full max-w-md p-4 border rounded shadow bg-white">
       <h2 className="text-lg font-semibold mb-4">Checkout</h2>
 
-      <input
+      <Input
         type="text"
         name="fullName"
         placeholder="Full Name"
         onChange={handleInput}
-        className="w-full border px-2 py-1 mb-2"
+        className="w-full border  mb-6"
       />
-      <input
+      <Input
         type="email"
         name="email"
         placeholder="Email"
         onChange={handleInput}
-        className="w-full border px-2 py-1 mb-2"
+        className="w-full border mb-6"
       />
-      <input
+      <Input
         type="text"
         name="address"
         placeholder="Address"
         onChange={handleInput}
-        className="w-full border px-2 py-1 mb-4"
+        className="w-full border mb-6"
       />
 
-      <button
-        onClick={handleCheckout}
-        className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-      >
-        Pay with Stripe Checkout
-      </button>
+      <Button onClick={handleCheckout}>Pay with Stripe Checkout</Button>
     </div>
   );
 };
