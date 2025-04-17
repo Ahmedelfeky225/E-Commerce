@@ -58,7 +58,7 @@ const SearchPage = ({ setOpenSearchPage }) => {
           <div className="w-full flex justify-center items-end pt-14">
             <img
               src="/images/empty-search.576b99d7.svg"
-              className="md:w-[50%]"
+              className="md:w-[50%] w-[70%]"
             />
           </div>
         )}
