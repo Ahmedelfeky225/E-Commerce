@@ -208,7 +208,6 @@ const Navbar = () => {
                   </>
                 ) : (
                   <NavLink
-                    reloadDocument
                     to="/auth/login"
                     className="text-gray-600 hover:text-purple-800 dark:text-white"
                   >

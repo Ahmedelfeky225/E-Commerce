@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card overflow-hidden relative hover:scale-110 transition duration-300 flex flex-col pb-4   dark:bg-gray-900 dark:rounded-sm dark:border dark:border-gray-800">
       <div className="dark:bg-[#3a3a3a3e] bg-[#3a3a3a0e]">
-        <Link to={`/product/${id}`} reloadDocument>
+        <Link to={`/product/${id}`}>
           <img
             src={thumbnail}
             alt={`Image of ${title}`}
