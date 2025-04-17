@@ -127,13 +127,13 @@ const BrandsPage = () => {
             </span>
           </div>
         </div>
-        <ul className="w-full flex flex-wrap gap-4 justify-center">
+        <ul className="w-full flex flex-wrap md:gap-4 gap-3 row-span-6 justify-center">
           {currentBrands.length > 0 ? (
             currentBrands.map((brand, index) => (
               <li
                 key={index}
                 onClick={() => handleBrandClick(brand)}
-                className="bg-[#25104912] w-[180px] md:w-[200px] h-[200px] p-3 border border-gray-200 flex justify-center items-center rounded-md text-2xl font-bold text-gray-800 text-center hover:bg-[#25104923] hover:scale-105 cursor-pointer transition-all duration-200 dark:bg-gray-800 dark:text-white dark:border-gray-700"
+                className="bg-[#25104912] w-[150px] md:w-[200px] h-[200px] p-3 border border-gray-200 flex justify-center items-center rounded-md text-2xl font-bold text-gray-800 text-center hover:bg-[#25104923] hover:scale-105 cursor-pointer transition-all duration-200 dark:bg-gray-800 dark:text-white dark:border-gray-700"
                 style={{
                   boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                   fontFamily: "Anton",
