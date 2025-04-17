@@ -46,7 +46,7 @@ const OfferPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center px-3">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {[...Array(numberOfProducts)].map((_, index) => (
             <div
@@ -63,7 +63,7 @@ const OfferPage = () => {
     return <div className="text-center text-red-500 min-h-screen">{error}</div>;
   }
   return (
-    <div className="mt-20 container mx-auto  max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl  my-4">
+    <div className="mt-20 container mx-auto px-3 max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl  my-4">
       <h2 className="font-bold text-xl mb-3">
         {t("Products")} ({offers.length})
       </h2>
