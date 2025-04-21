@@ -161,3 +161,9 @@ a.active {
     height: 30px !important;
   }
 }
+.cardd span:first-of-type {
+  color: #ca8a10 !important;
+}
+.two {
+  color: #9ca3af !important;
+}

@@ -4,7 +4,6 @@ import { fetchProducts } from "../app/features/product/productSlice";
 import ProductCard from "./ProductCard";
 import SkeletonLoader from "./SkeletonLoader";
 import { t } from "i18next";
-import { motion } from "framer-motion";
 
 const ProductCategories = () => {
   const dispatch = useDispatch();
@@ -36,22 +35,10 @@ const ProductCategories = () => {
               <SkeletonLoader />
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-4 lg:gap-6">
-                {categoryProducts.slice(0, 10).map((product, index) => (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      ease: "linear",
-                      delay: index * 0.1,
-                      type: "spring",
-                      stiffness: 100,
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                  >
+                {categoryProducts.slice(0, 10).map((product) => (
+                  <div key={product.id}>
                     <ProductCard product={product} />
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             )}

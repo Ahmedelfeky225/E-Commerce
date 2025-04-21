@@ -46,17 +46,17 @@ const ProductCard = ({ product }) => {
             {limitTitleLength(title)}
           </h2>
         </div>
-        <div className="flex items-center gap-2 px-3">
+        <div className="cardd flex items-center gap-2 px-3">
           {Math.round(discountPercentage) ? (
             <span
-              className="text-red-600 dark:text-yellow-600
+              className="text-red-600 dark:!text-yellow-600
              text-[13px] sm:text-[15px]"
             >
               {calculateDiscountPrice(price, discountPercentage)} KWD
             </span>
           ) : null}
           {Math.round(discountPercentage) ? (
-            <span className="text-gray-400 line-through text-[13px] sm:text-[15px]">
+            <span className="two text-gray-400 line-through text-[13px] sm:text-[15px]">
               {price} KWD
             </span>
           ) : (
